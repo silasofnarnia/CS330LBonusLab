@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 // Desired import: import bootstrap from "bootstrap";
 // Import everything from bootstrap: 
