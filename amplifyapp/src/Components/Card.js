@@ -8,33 +8,33 @@ function Card() {
     let languageName = allRules.languageName;
     
     // Consonants
-    let consonants = `<ul>`;
+    let consonants = ``;
     let consonantArray = Sounds.Consonants;
     let consonantSoundsArray = Sounds.ConsonantSounds;
     for (let i = 0; i < consonantArray.length; i++) {
-        consonants += `<li>${consonantArray[i]} (${consonantSoundsArray[i]})</li>`;
+        consonants += `${consonantArray[i]} (${consonantSoundsArray[i]})\n`;
     }
-    consonants += `</ul>`;
+    //consonants += `</ul>`;
 
     // Vowels
-    let vowels = `<ul>`;
+    let vowels = ``;
     let vowelsArray = Sounds.Vowels;
     let vowelSoundsArray = Sounds.VowelSounds;
     for (let i = 0; i < vowelsArray.length; i++) {
-        vowels += `<li>${vowelsArray[i]} (${vowelSoundsArray[i]})</li>`;
+        vowels += `${vowelsArray[i]} (${vowelSoundsArray[i]})\n`;
     }
-    vowels += `</ul>`;
+    //vowels += `</ul>`;
 
     // Phonotactics
-    let Phonotactics = `<ul>`;
+    let Phonotactics = ``;
     let phonotacticsSyllablesArray = Sounds.Phonotactics.Syllables;
     for (let i = 0; i < phonotacticsSyllablesArray.length; i++) {
-        Phonotactics += `<li>${phonotacticsSyllablesArray[i]}</li>`
+        Phonotactics += `${phonotacticsSyllablesArray[i]}\n`;
     }
-    Phonotactics += `</ul>`;
-    Phonotactics += `<p>`;
+    //Phonotactics += `</ul>`;
+    //Phonotactics += `<p>`;
     Phonotactics += Sounds.Phonotactics.Words;
-    Phonotactics += `</p>`;
+    //Phonotactics += `</p>`;
 
     // Return statement. 
     return (
