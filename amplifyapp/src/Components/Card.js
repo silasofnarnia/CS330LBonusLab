@@ -1,41 +1,84 @@
 import Modal from './Modal';
+import getRules from './../data/rules.js';
 
 function Card() {
+    // Define rules. 
+    let allRules = getRules();
+    let Sounds = allRules.Sounds;
+    let languageName = allRules.languageName;
+    
+    // Consonants
+    let consonants = ``;
+    let consonantArray = Sounds.Consonants;
+    let consonantSoundsArray = Sounds.ConsonantSounds;
+    for (let i = 0; i < consonantArray.length; i++) {
+        consonants += `${consonantArray[i]} (${consonantSoundsArray[i]})\n`;
+    }
+    //consonants += `</ul>`;
+
+    // Vowels
+    let vowels = ``;
+    let vowelsArray = Sounds.Vowels;
+    let vowelSoundsArray = Sounds.VowelSounds;
+    for (let i = 0; i < vowelsArray.length; i++) {
+        vowels += `${vowelsArray[i]} (${vowelSoundsArray[i]})\n`;
+    }
+    //vowels += `</ul>`;
+
+    // Phonotactics
+    let Phonotactics = ``;
+    let phonotacticsSyllablesArray = Sounds.Phonotactics.Syllables;
+    for (let i = 0; i < phonotacticsSyllablesArray.length; i++) {
+        Phonotactics += `${phonotacticsSyllablesArray[i]}\n`;
+    }
+    //Phonotactics += `</ul>`;
+    //Phonotactics += `<p>`;
+    Phonotactics += Sounds.Phonotactics.Words;
+    //Phonotactics += `</p>`;
+
+    // Return statement. 
     return (
         <div id="threeCardsContainer" 
             style={{display: "flex", gap: 9 + 'rem', justifyContent: "center"}}>
-            <div class="card" style={{width: 18 + 'rem'}}>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#first">
-                        Launch demo modal
-                    </button>
-                    {Modal("first")}
-                </div>
+            {getCard(`Consonants`, `Sounds used in ${languageName}.`, consonants)}
+            {getCard(`Vowels`, `Vowels used in ${languageName}.`, vowels)}
+            {getCard(`Phonotactics`, 
+                `Unstated rules used in ${languageName}.`, 
+                Phonotactics)}
+        </div>
+    );
+}
+
+function getCard(title, sample, ModalContents) {
+    //console.log("Want modal to respond to " + title);
+    
+    return (
+        <div className="card" style={{width: 18 + 'rem'}}>
+            <div className="card-body">
+                <h5 className="card-title">{title}</h5>
+                <p className="card-text">{sample}</p>
+                <button type="button" 
+                    className="btn btn-primary" 
+                    data-bs-toggle="modal" 
+                    data-bs-target={`#${title}`}>
+                    Explore
+                </button>
+                {Modal(title, ModalContents)}
             </div>
-            <div class="card" style={{width: 18 + 'rem'}}>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#second">
-                        Launch demo modal
-                    </button>
-                    {Modal("second")}
-                </div>
-            </div>
-            <div class="card" style={{width: 18 + 'rem'}}>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#third">
-                        Launch demo modal
-                    </button>
-                    {Modal("third")}
-                </div>
-            </div>
+        </div> 
+    );
+}
+
+/*function Card() {
+    
+    // RETURN FINAL
+    return (
+        <div id="threeCardsContainer" 
+            style={{display: "flex", gap: 9 + 'rem', justifyContent: "center"}}>
+            <BuildCards/>
         </div>
     ); // End returning HTML for Card function. 
-} // End function Card().
+
+} // End function Card().*/
 
 export default Card;
