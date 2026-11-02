@@ -8,43 +8,25 @@ function Card() {
     let languageName = allRules.languageName;
     
     // Consonants
-    let consonants = ``;
     let consonantArray = Sounds.Consonants;
     let consonantSoundsArray = Sounds.ConsonantSounds;
-    for (let i = 0; i < consonantArray.length; i++) {
-        consonants += `${consonantArray[i]} (${consonantSoundsArray[i]})\n`;
-    }
-    //consonants += `</ul>`;
-
+    
     // Vowels
-    let vowels = ``;
     let vowelsArray = Sounds.Vowels;
     let vowelSoundsArray = Sounds.VowelSounds;
-    for (let i = 0; i < vowelsArray.length; i++) {
-        vowels += `${vowelsArray[i]} (${vowelSoundsArray[i]})\n`;
-    }
-    //vowels += `</ul>`;
 
     // Phonotactics
-    let Phonotactics = ``;
     let phonotacticsSyllablesArray = Sounds.Phonotactics.Syllables;
-    for (let i = 0; i < phonotacticsSyllablesArray.length; i++) {
-        Phonotactics += `${phonotacticsSyllablesArray[i]}\n`;
-    }
-    //Phonotactics += `</ul>`;
-    //Phonotactics += `<p>`;
-    Phonotactics += Sounds.Phonotactics.Words;
-    //Phonotactics += `</p>`;
-
+    
     // Return statement. 
     return (
         <div id="threeCardsContainer" 
             style={{display: "flex", gap: 9 + 'rem', justifyContent: "center"}}>
-            {getCard(`Consonants`, `Sounds used in ${languageName}.`, consonants)}
-            {getCard(`Vowels`, `Vowels used in ${languageName}.`, vowels)}
+            {getCard(`Consonants`, `Sounds used in ${languageName}.`, consonantArray)}
+            {getCard(`Vowels`, `Vowels used in ${languageName}.`, vowelsArray)}
             {getCard(`Phonotactics`, 
                 `Unstated rules used in ${languageName}.`, 
-                Phonotactics)}
+                phonotacticsSyllablesArray)}
         </div>
     );
 }

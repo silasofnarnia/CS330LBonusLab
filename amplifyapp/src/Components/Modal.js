@@ -9,7 +9,15 @@ function Modal(ID, content) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        <p>{content}</p>
+                        {content.map(item=> (
+                                <li> <p style={{
+                                        justifyContent: "left",
+                                        display: "flex",
+                                        gap: 1+"rem"
+                                    }}>
+                                    {item}
+                                </p></li>
+                            ) )}
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Close</button>
